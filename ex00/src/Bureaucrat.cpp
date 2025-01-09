@@ -6,14 +6,24 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/08 09:11:00 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/08 17:19:36 by christian.r   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
 
 // Constructor
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
+{
+	std::cout << BLUE << "Bureaucrat default constructor called." << RESET << std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+{
+	std::cout << BLUE << "Bureaucrat constructor called." << RESET << std::endl;
+}
+
+
 {
 	std::cout << BLUE << "Bureaucrat constructor called." << RESET << std::endl;
 }

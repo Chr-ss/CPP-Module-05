@@ -44,9 +44,12 @@
 
 class Bureaucrat{
 private:
+	std::string _name;
+	unsigned int			_grade;
 public:
 	// Constructor
 	Bureaucrat();
+	Bureaucrat(std::string name, int grade);
 	// Destructor
 	~Bureaucrat();
 
@@ -55,9 +58,28 @@ public:
 	// Copy assignment operator
 	Bureaucrat& operator=(const Bureaucrat &other);
 
-	//	Setters
+	//	Getter
+	const std::string	getName() const;
+	unsigned int		getGrade() const;
+	// Setter
+	void				setGrade(unsigned int grade);
 	// Public functions
+	void		incrementGrade();
+	void		decrementGrade();
+
+	Class GradeTooHighException : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
+	Class GradeTooLowException : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
 };
 
+// ostream Overload
+std::ostream	&operator<<(std::ostream &o, Bureaucrat *a);
 
 #endif // Bureaucrat_HPP
