@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/09 17:54:22 by crasche       ########   odam.nl         */
+/*   Updated: 2025/01/09 18:45:15 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,24 @@ void Bureaucrat::decrementGrade()
 	else
 		_grade++;
 }
+
+void Bureaucrat::signForm(Form &f)
+{
+	if (f.getSigned())
+	{
+		std::cout << BRIGHT_GREEN << "\"" << f.getName() << "\" already signed." << RESET << std::endl;
+	}
+	else if (f.getSignGrade() >= _grade)
+	{
+		std::cout << BRIGHT_GREEN << _name << " signs form \"" << f.getName() << "\". " << RESET;
+		f.beSigned();
+	}
+	else
+	{
+		std::cout << BRIGHT_RED << _name << " cannot sign " << f.getName() << " because grade is too low." << RESET << std::endl;
+	}
+}
+
 
 // Exception Classes
 const char *Bureaucrat::GradeTooHighException::what() const throw()

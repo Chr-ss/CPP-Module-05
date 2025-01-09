@@ -17,6 +17,8 @@
 # include <iostream>
 # include <exception>
 
+# include "Form.hpp"
+
 # define RESET          "\033[0m"
 # define BLACK          "\033[30m"
 # define WHITE          "\033[37m"
@@ -72,6 +74,7 @@ public:
 	// Public functions
 	void				incrementGrade();
 	void				decrementGrade();
+	void				signForm(Form &f);
 
 	// Exception Classes
 	class GradeTooHighException : public std::exception
