@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 13:51:20 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/15 13:50:40 by christian.r   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,41 @@ void Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 	else
 		_grade++;
+}
+
+void Bureaucrat::signForm(AForm &f)
+{
+	if (f.getSigned())
+	{
+		std::cout << BRIGHT_GREEN << "\"" << f.getName() << "\" already signed." << RESET << std::endl;
+	}
+	else if (f.getSignGrade() >= _grade)
+	{
+		std::cout << BRIGHT_GREEN << _name << " signs AForm \"" << f.getName() << "\". " << RESET;
+		f.beSigned();
+	}
+	else
+	{
+		std::cout << BRIGHT_RED << _name << " cannot sign " << f.getName() << " because grade is too low." << RESET << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm &f) const
+{
+	if (!f.getSigned())
+	{
+		std::cout << BRIGHT_RED << _name << " cannot execute " << f.getName() << " because form is not signed." << RESET << std::endl;
+		return ;
+	}
+	if (_grade <= f.getExecuteGrade())
+	{
+		std::cout << BRIGHT_GREEN << _name << " executes AForm \"" << f.getName() << "\"." << RESET << std::endl;
+		f.executeForm(*this);
+	}
+	else
+	{
+		std::cout << BRIGHT_RED << _name << " cannot execute " << f.getName() << " because grade is too low." << RESET << std::endl;
+	}
 }
 
 // Exception Classes

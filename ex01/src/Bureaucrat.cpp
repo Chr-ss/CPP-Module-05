@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/09 18:45:15 by crasche       ########   odam.nl         */
+/*   Updated: 2025/01/15 13:50:52 by christian.r   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 // Overload << operator
 std::ostream& operator<<(std::ostream &o, const Bureaucrat &b)
 {
-	o << BRIGHT_BLUE << b.getName() << ",  bureaucrat grade " << b.getGrade() << "." << RESET << std::endl;
+	o << BRIGHT_BLUE << b.getName() << ", bureaucrat grade " << b.getGrade() << "." << RESET << std::endl;
 
 	return (o);
 }
