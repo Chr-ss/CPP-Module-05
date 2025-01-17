@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 14:36:10 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:12:54 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Bureaucrat;
 
 class AForm{
 private:
-	std::string			_name;
+	const std::string	_name;
 	bool				_signed;
 	const unsigned int	_signGrade;
 	const unsigned int	_executeGrade;
@@ -38,7 +38,7 @@ public:
 	AForm& operator=(const AForm &other);
 
 	//	Getter
-	std::string			getName() const;
+	const std::string	getName() const;
 	bool				getSigned() const;
 	unsigned int		getSignGrade() const;
 	unsigned int		getExecuteGrade() const;
@@ -48,7 +48,7 @@ public:
 
 	// Public functions
 	virtual void		beSigned() = 0;
-	virtual void		executeForm(Bureaucrat const & executor) const = 0;
+	virtual void		execute(Bureaucrat const & executor) const = 0;
 
 	// Exception Classes
 	class GradeTooHighException : public std::exception

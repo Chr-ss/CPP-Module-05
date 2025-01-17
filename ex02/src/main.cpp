@@ -6,7 +6,7 @@
 /*   By: crasche <crasche@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/07 16:36:52 by crasche       #+#    #+#                 */
-/*   Updated: 2025/01/15 14:33:29 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:18:42 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main(void)
 		std::cout << "Announcing: " << nameGradeBureaucrat << RESET;
 		Bureaucrat copyBureaucrat(gradeBureaucrat);
 		std::cout << "Announcing: " << copyBureaucrat << RESET;
-		Bureaucrat copyAssignmentBureaucrat = nameGradeBureaucrat;
-		std::cout << "Announcing: " << copyAssignmentBureaucrat << RESET;
+		copyBureaucrat = nameGradeBureaucrat;
+		std::cout << "Announcing: " << copyBureaucrat << RESET;
 	}
 	{
 		std::cout << BOLD << CYAN << "\n\tTest 2 (Exception)"<< RESET << std::endl;

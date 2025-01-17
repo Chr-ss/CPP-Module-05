@@ -6,7 +6,7 @@
 /*   By: crasche <crasche@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/07 16:36:52 by crasche       #+#    #+#                 */
-/*   Updated: 2025/01/09 18:46:00 by crasche       ########   odam.nl         */
+/*   Updated: 2025/01/17 17:23:13 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int main(void)
 		std::cout << "Announcing: " << nameGradeBureaucrat << RESET;
 		Bureaucrat copyBureaucrat(gradeBureaucrat);
 		std::cout << "Announcing: " << copyBureaucrat << RESET;
-		Bureaucrat copyAssignmentBureaucrat = nameGradeBureaucrat;
-		std::cout << "Announcing: " << copyAssignmentBureaucrat << RESET;
+		copyBureaucrat = nameGradeBureaucrat;
+		std::cout << "Announcing: " << copyBureaucrat << RESET;
 	}
 	{
 		std::cout << BOLD << CYAN << "\n\tTest 2 (Exception)"<< RESET << std::endl;
@@ -120,8 +120,8 @@ int main(void)
 		std::cout << "Announcing: " << nameSignForm << RESET;
 		Form copyForm(signForm);
 		std::cout << "Announcing: " << copyForm << RESET;
-		Form copyAssignmentForm = nameSignForm;
-		std::cout << "Announcing: " << copyAssignmentForm << RESET;
+		copyForm = nameSignForm;
+		std::cout << "Announcing: " << copyForm << RESET;
 	}
 	{
 		std::cout << BOLD << CYAN << "\n\tTest 2 (Exception)"<< RESET << std::endl;

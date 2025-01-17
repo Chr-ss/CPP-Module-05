@@ -49,8 +49,8 @@ class AForm;
 
 class Bureaucrat{
 private:
-	std::string _name;
-	unsigned int			_grade;
+	const std::string	_name;
+	unsigned int		_grade;
 public:
 	// Constructor
 	Bureaucrat();
@@ -67,7 +67,7 @@ public:
 	Bureaucrat& operator=(const Bureaucrat &other);
 
 	//	Getter
-	std::string			getName() const;
+	const std::string	getName() const;
 	unsigned int		getGrade() const;
 
 	// Setter

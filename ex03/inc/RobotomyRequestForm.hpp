@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 13:30:12 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:13:09 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ public:
 	RobotomyRequestForm& operator=(const RobotomyRequestForm &other);
 
 	// Public functions
-	void	beSigned();
-	void	executeForm(Bureaucrat const & executor) const;
+	void			beSigned();
+	void			execute(Bureaucrat const & executor) const;
+	static AForm*	create(const std::string &target);
 
 	// // Exception Classes
 	// class GradeTooHighException : public std::exception

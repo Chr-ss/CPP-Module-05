@@ -6,14 +6,14 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 14:10:50 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:26:36 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/RobotomyRequestForm.hpp"
 #include <cstdlib>
 #include <ctime>
-#include <random>
+// #include <random>
 
 // Constructor
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Default RobotomyRequestForm", 72, 45), _target("default")
@@ -53,21 +53,26 @@ void	RobotomyRequestForm::beSigned()
 	std::cout << BRIGHT_GREEN << "\""<< AForm::getName() << "\" has been signed." << RESET << std::endl;
 }
 
-void	RobotomyRequestForm::executeForm(Bureaucrat const & executor) const
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > AForm::getExecuteGrade())
 		throw GradeTooLowException();
-		
-	// std::srand(std::time(nullptr));
-	// int random = std::rand() % 2;
 
-	std::random_device rd;  // Seed generator
-	std::mt19937 gen(rd()); // "Mersenne Twister" random number engine
-	std::uniform_int_distribution<int> dist(0, 1); // limit numbers to 0 or 1 with equal probability
-	int randomValue = dist(gen);
+	std::srand(std::time(0));
+	int randomValue = std::rand() % 2;
+
+	// std::random_device rd;  // Seed generator
+	// std::mt19937 gen(rd()); // "Mersenne Twister" random number engine
+	// std::uniform_int_distribution<int> dist(0, 1); // limit numbers to 0 or 1 with equal probability
+	// int randomValue = dist(gen);
 
 	if (randomValue == 0)
 		std::cout << BOLD << BRIGHT_GREEN << "Drilling noises... \n" << _target << "..has been robotomized successfully." << RESET << std::endl;
 	else
 		std::cout << BOLD << BRIGHT_RED << "Drilling noises... \n" << _target << "..the robotomy failed." << RESET << std::endl;
+}
+
+AForm*	RobotomyRequestForm::create(const std::string &target)
+{
+	return (new RobotomyRequestForm(target));
 }

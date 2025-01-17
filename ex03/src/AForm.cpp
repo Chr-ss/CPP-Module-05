@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 09:29:47 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:22:25 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ AForm& AForm::operator=(const AForm &other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		// _name = other._name; // unable to copy into const
 		_signed = other._signed;
 		// _signGrade = other._signGrade; // unable to copy const grade
 		// _executeGrade = other._executeGrade; // unable to copy const grade
@@ -75,7 +75,7 @@ AForm::~AForm()
 
 
 // Getters
-std::string AForm::getName() const
+const std::string AForm::getName() const
 {
 	return (_name);
 }

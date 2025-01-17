@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 13:31:24 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:13:35 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,14 @@ void	PresidentialPardonForm::beSigned()
 	std::cout << BRIGHT_GREEN << "\"" << AForm::getName() << "\" on target \"" << _target << "\", has been signed." << RESET << std::endl;
 }
 
-void	PresidentialPardonForm::executeForm(Bureaucrat const & executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > AForm::getExecuteGrade())
 		throw GradeTooLowException();
 	std::cout << BOLD << BRIGHT_GREEN << "\""<< _target << "\" has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
+}
+
+AForm*	PresidentialPardonForm::create(const std::string &target)
+{
+	return (new PresidentialPardonForm(target));
 }

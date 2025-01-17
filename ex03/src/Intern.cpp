@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 14:35:05 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:12:01 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,27 @@ Intern::~Intern()
 // Public functions
 AForm*	Intern::makeForm(std::string formName, std::string target)
 {
-	if (formName == "shrubbery creation")
+	AForm *(*allForms[])(const std::string &target) =
 	{
-		std::cout << BRIGHT_GREEN << "Intern creates \"" << formName << "\" form." << RESET << std::endl;
-		return (new ShrubberyCreationForm(target));
-	}
-	else if (formName == "robotomy request")
+		ShrubberyCreationForm::create,
+		RobotomyRequestForm::create,
+		PresidentialPardonForm::create
+	};
+	std::string formNames[] =
 	{
-		std::cout << BRIGHT_GREEN << "Intern creates \"" << formName << "\" form." << RESET << std::endl;
-		return (new RobotomyRequestForm(target));
-	}
-	else if (formName == "presidential pardon")
+		"shrubbery creation",
+		"robotomy request",
+		"presidential pardon"
+	};
+
+	for (int i = 0; i < 3; i++)
 	{
-		std::cout << BRIGHT_GREEN << "Intern creates \"" << formName << "\" form." << RESET << std::endl;
-		return (new PresidentialPardonForm(target));
+		if (formName == formNames[i])
+		{
+			std::cout << BRIGHT_GREEN << "Intern creates \"" << formName << "\" form." << RESET << std::endl;
+			return (allForms[i](target));
+		}
 	}
-	else
-	{
-		std::cout << BRIGHT_RED << "Intern does not recognize the form name." << RESET << std::endl;
-		return (NULL);
-	}
+	std::cout << BRIGHT_RED << "Intern does not recognize the form name." << RESET << std::endl;
+	return (NULL);
 }

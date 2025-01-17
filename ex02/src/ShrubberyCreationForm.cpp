@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 13:30:07 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:27:46 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ void	ShrubberyCreationForm::beSigned()
 	std::cout << BRIGHT_GREEN << "\""<< AForm::getName() << "\" has been signed." << RESET << std::endl;
 }
 
-void	ShrubberyCreationForm::executeForm(Bureaucrat const & executor) const
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > AForm::getExecuteGrade())
 		throw GradeTooLowException();
 	std::ofstream file;
-	file.open(AForm::getName() + "_shrubbery");
+	std::string filename = _target + "_shrubbery";
+	file.open(filename.c_str());
 	file << "      /\\      " << std::endl;
 	file << "     /\\*\\     " << std::endl;
 	file << "    /\\O\\*\\    " << std::endl;

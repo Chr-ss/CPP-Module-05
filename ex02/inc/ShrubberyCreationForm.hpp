@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 13:39:07 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:13:04 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ public:
 
 	// Public functions
 	void	beSigned();
-	void	executeForm(Bureaucrat const & executor) const;
+	void	execute(Bureaucrat const & executor) const;
 
 	// // Exception Classes
 	// class GradeTooHighException : public std::exception

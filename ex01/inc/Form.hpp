@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/09 18:36:08 by crasche       ########   odam.nl         */
+/*   Updated: 2025/01/17 17:10:19 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 
 class Form{
 private:
-	std::string			_name;
+	const std::string	_name;
 	bool				_signed;
 	const unsigned int	_signGrade;
 	const unsigned int	_executeGrade;
@@ -65,7 +65,7 @@ public:
 	Form& operator=(const Form &other);
 
 	//	Getter
-	std::string			getName() const;
+	const std::string	getName() const;
 	bool				getSigned() const;
 	unsigned int		getSignGrade() const;
 	unsigned int		getExecuteGrade() const;

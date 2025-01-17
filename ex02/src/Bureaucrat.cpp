@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/15 13:50:40 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/17 17:22:49 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,8 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name)
 }
 
 // Copy constructor
-Bureaucrat::Bureaucrat(const Bureaucrat &toCopy)
+Bureaucrat::Bureaucrat(const Bureaucrat &toCopy) : _name(toCopy._name), _grade(toCopy._grade)
 {
-	if (this != &toCopy)
-	{
-		_name = toCopy._name;
-		_grade = toCopy._grade;
-	}
 	std::cout << BLUE << "Bureaucrat copy constructor called." << RESET << std::endl;
 }
 
@@ -58,7 +53,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		// _name = other._name; // unable to copy into const
 		_grade = other._grade;
 	}
 	std::cout << BLUE << "Bureaucrat copy assignment operator called." << RESET << std::endl;
@@ -73,7 +68,7 @@ Bureaucrat::~Bureaucrat()
 
 
 // Getters
-std::string Bureaucrat::getName() const
+const std::string Bureaucrat::getName() const
 {
 	return (_name);
 }
@@ -138,7 +133,7 @@ void	Bureaucrat::executeForm(AForm &f) const
 	if (_grade <= f.getExecuteGrade())
 	{
 		std::cout << BRIGHT_GREEN << _name << " executes AForm \"" << f.getName() << "\"." << RESET << std::endl;
-		f.executeForm(*this);
+		f.execute(*this);
 	}
 	else
 	{

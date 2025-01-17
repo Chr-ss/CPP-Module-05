@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/09 18:42:56 by crasche       ########   odam.nl         */
+/*   Updated: 2025/01/17 17:26:05 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Form::Form(std::string name, unsigned int signGrade, unsigned int executeGrade) 
 		throw GradeTooHighException();
 	else if (executeGrade > 150)
 		throw GradeTooLowException();
-	std::cout << BLUE << "Form sign and execute grade constructor called." << RESET << std::endl;
+	std::cout << BLUE << "Form name, sign and execute grade constructor called." << RESET << std::endl;
 }
 
 // Copy constructor
@@ -57,7 +57,7 @@ Form& Form::operator=(const Form &other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		// _name = other._name; // unable to copy into const
 		_signed = other._signed;
 		// _signGrade = other._signGrade; // unable to copy const grade
 		// _executeGrade = other._executeGrade; // unable to copy const grade
@@ -75,7 +75,7 @@ Form::~Form()
 
 
 // Getters
-std::string Form::getName() const
+const std::string Form::getName() const
 {
 	return (_name);
 }
